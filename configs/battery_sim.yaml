@@ -1,0 +1,54 @@
+# Battery Thermal Management - Simulation Configuration
+# Author: Thaer Abushawer
+# Target: Li-ion pouch cell under fast-charging conditions
+
+physics:
+  # Material properties (typical for Li-ion battery cells)
+  rho: 2500.0          # Density [kg/m³] 
+  mu: 0.001            # Dynamic viscosity of coolant (water-glycol mix) [Pa·s]
+  cp: 1000.0           # Specific heat capacity [J/(kg·K)]
+  k_th: 1.5            # Thermal conductivity [W/(m·K)]
+  
+  # Heat generation from internal resistance
+  # Typical range: 10,000 - 100,000 W/m³ depending on C-rate
+  heat_source: 50000.0  # [W/m³]
+
+model:
+  # Network architecture: [input_dim, hidden1, hidden2, ..., output_dim]
+  # Input: (x, y, z), Output: (u, v, w, p, T)
+  layers: [3, 64, 64, 64, 64, 5]
+  
+  # Activation function: tanh is critical for capturing second derivatives
+  activation: "tanh"
+
+train:
+  epochs: 5000
+  batch_size: 2048
+  lr: 0.001
+  
+  # Loss weight balancing (tuned empirically)
+  weights:
+    continuity: 1.0
+    momentum: 1.0
+    energy: 2.0      # Higher weight for thermal equation
+    boundary: 10.0    # Strong enforcement of BCs
+  
+  save_dir: "results/"
+  log_interval: 100
+
+domain:
+  # Computational domain boundaries [m]
+  x_min: 0.0
+  x_max: 0.1    # 10 cm
+  y_min: 0.0
+  y_max: 0.05   # 5 cm
+  z_min: 0.0
+  z_max: 0.01   # 1 cm (cell thickness)
+
+boundary_conditions:
+  # Temperature BCs
+  T_inlet: 298.0      # Coolant inlet temperature [K] (25°C)
+  T_wall: 303.0       # Maximum allowable wall temp [K] (30°C)
+  
+  # Velocity BCs
+  u_inlet: 0.1        # Inlet velocity [m/s]
