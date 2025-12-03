@@ -1,7 +1,8 @@
-# Physics-Informed Battery Thermal Solver 🔋⚡
+# PINN-Based Battery Thermal Management: Proof of Concept 🔋⚡
 
-A deep learning framework for solving coupled thermal-fluid problems in lithium-ion battery cooling systems using **Physics-Informed Neural Networks (PINNs)**.
-
+A **Proof of Concept** implementation demonstrating the feasibility of applying 
+Physics-Informed Neural Networks (PINNs) to coupled thermal-fluid problems in 
+lithium-ion battery cooling systems.
 ---
 
 ## 🎯 Motivation
