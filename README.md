@@ -1,26 +1,27 @@
-# PINN-Based Battery Thermal Management: Proof of Concept 🔋⚡
+# PINN-Based Battery Thermal Management: Conceptual Framework 🔋⚡
 
-A **Proof of Concept** implementation demonstrating the feasibility of applying 
-Physics-Informed Neural Networks (PINNs) to coupled thermal-fluid problems in 
-lithium-ion battery cooling systems.
----
+A **conceptual implementation** of Physics-Informed Neural Networks (PINNs) for coupled thermal-fluid problems in lithium-ion battery cooling systems.
+
+**⚠️ Status: Framework design complete - Experimental validation pending**
+
+***
 
 ## 🎯 Motivation
 
-Traditional CFD solvers (OpenFOAM, ANSYS Fluent) are computationally expensive for parametric studies in battery pack design. This PINN-based approach offers:
-- **Fast forward solving** once trained
-- **Mesh-free** operation (no complex pre-processing)
-- **Differentiable** outputs for gradient-based optimization
+Traditional CFD solvers (OpenFOAM, ANSYS Fluent) are computationally expensive for parametric studies in battery pack design. This PINN-based framework is designed to explore:
+- Potential for fast forward solving after training
+- Mesh-free operation (eliminating complex pre-processing)
+- Differentiable outputs for gradient-based optimization
 
-This framework targets **real-world engineering applications** in electric vehicle thermal management systems.
+This framework targets future applications in electric vehicle thermal management systems.
 
----
+***
 
 ## 🧠 Technical Overview
 
 ### Governing Equations
 
-The solver enforces the following coupled PDEs:
+The solver architecture enforces the following coupled PDEs:
 
 **1. Continuity (Incompressible Flow)**
 ∇·u = 0
@@ -42,10 +43,11 @@ Where:
 - **Activation**: Hyperbolic tangent (essential for smooth second derivatives)
 - **Training**: Adam optimizer with adaptive loss weighting
 
----
+***
 
 ## 📁 Project Structure
 
+```
 Battery-Thermal-PINN/
 ├── configs/                # YAML configuration files
 │   └── battery_sim.yaml   # Default simulation parameters
@@ -56,34 +58,38 @@ Battery-Thermal-PINN/
 │   └── utils.py           # I/O and logging utilities
 ├── main.py                # Training script
 └── requirements.txt       # Python dependencies
+```
 
----
+***
 
 ## 🚀 Quick Start
 
 ### Installation
 
-Clone the repository
-git clone https://github.com/yourusername/Battery-Thermal-PINN.git
+```bash
+# Clone the repository
+git clone https://github.com/tsa2000/Battery-Thermal-PINN.git
 cd Battery-Thermal-PINN
-Create virtual environment (recommended)
+
+# Create virtual environment (recommended)
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies
+
+# Install dependencies
 pip install -r requirements.txt
+```
 
 ### Running a Simulation
 
-Basic training
-python main.py –config configs/battery_sim.yaml
-Resume from checkpoint
-python main.py –resume results/checkpoint_epoch_3000.pth
+```bash
+# Basic training
+python main.py --config configs/battery_sim.yaml
 
-### Monitoring Training
+# Resume from checkpoint
+python main.py --resume results/checkpoint_epoch_3000.pth
+```
 
-Check the `results/training.log` file for detailed metrics, or watch the progress bar for real-time updates.
-
----
+***
 
 ## ⚙️ Configuration
 
@@ -94,68 +100,78 @@ Edit `configs/battery_sim.yaml` to customize:
 - Boundary conditions (`T_inlet`, `u_inlet`)
 - Training hyperparameters (`epochs`, `lr`, `batch_size`)
 
----
+***
 
-## 🧪 Validation Strategy
+## 🧪 Validation Strategy (Planned)
 
-To ensure physical accuracy:
+To ensure physical accuracy, the following validation steps are proposed:
 1. **Analytical benchmarks**: Compare with 1D heat conduction solutions
 2. **CFD cross-validation**: Verify against OpenFOAM results for simple geometries
 3. **Energy balance check**: Ensure heat generation equals heat removal at steady state
 
-Target accuracy: **< 3% error** in peak temperature prediction
+**Note**: These validation steps have not yet been performed. Performance claims require experimental verification.
 
----
+***
 
-## 📊 Results
+## 📊 Current Status
 
-(This section will be populated after training)
+**Framework Complete** ✅
+- PDE residual implementation
+- Neural network architecture
+- Boundary condition handling
+- Training loop structure
 
-Typical output includes:
-- Temperature distribution at cell surface
-- Velocity streamlines in cooling channels
-- Pressure drop across the module
-- Training convergence plots
+**Pending Work** ⏳
+- Experimental validation against analytical solutions
+- Comparison with traditional CFD results
+- Performance benchmarking (speed, accuracy)
+- Hyperparameter optimization
 
----
+***
 
-## 🔬 Research Background
+## 🔬 Research Context
 
-This work is part of a broader effort to integrate **AI-accelerated CFD** with **battery management systems (BMS)** for real-time thermal monitoring in EVs.
+This framework was developed to explore the integration of **AI-accelerated CFD** with **battery management systems (BMS)** for potential real-time thermal monitoring in EVs.
 
 Key references:
 - Raissi et al. (2019) - Original PINN framework
 - Wang et al. (2022) - Adaptive loss balancing for multi-physics PINNs
 
----
+***
 
-## 🤝 Contributing
+## 🤝 Future Development
 
-Contributions are welcome! Areas for improvement:
+Areas for extension and validation:
+- [ ] Validate against analytical heat transfer solutions
+- [ ] Benchmark against OpenFOAM for simple geometries
 - [ ] Implement adaptive mesh refinement
 - [ ] Add support for transient (time-dependent) simulations
-- [ ] Integrate with experimental validation data
-- [ ] Extend to multi-phase cooling (liquid + phase change materials)
+- [ ] Extend to multi-phase cooling systems
 
----
+***
 
 ## 📄 License
 
 MIT License - see `LICENSE` file for details.
 
----
+***
 
 ## 👤 Author
 
 **Thaer Abushawer**  
-Mechanical Engineer | Computational Fluid Dynamics Researcher  
-Focus: AI-Enhanced Thermal Management for Electric Vehicles
+Mechanical Engineer | Energetics  
+Interest: AI-Enhanced Computational Methods for Thermal Systems
 
----
+***
 
 ## 🙏 Acknowledgments
 
-This project was developed as part of advanced propulsion systems research program.
+This conceptual framework was developed as part of research preparation in advanced thermal management systems.
 
-Special thanks to the open-source community for PyTorch and scientific computing tools.
+Built using PyTorch and the scientific Python ecosystem.
 
+***
+
+**Disclaimer**: This is a proof-of-concept design requiring validation before production use. Performance characteristics and accuracy have not been experimentally verified.
+
+Sources
