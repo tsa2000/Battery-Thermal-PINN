@@ -26,28 +26,22 @@ Traditional CFD solvers (OpenFOAM, ANSYS Fluent) require hours per simulation, l
 
 **Continuity (Incompressible Flow)**
 
-$$
 \nabla \cdot \mathbf{u} = 0
-$$
 
 **Navier-Stokes (Momentum)**
 
-$$
 \rho (\mathbf{u} \cdot \nabla) \mathbf{u} = -\nabla p + \mu \nabla^2 \mathbf{u}
-$$
 
 **Energy (with Heat Source)**
 
-$$
 \rho c_p (\mathbf{u} \cdot \nabla) T = k \nabla^2 T + \dot{q}
-$$
 
 Where $$\dot{q}$$ represents volumetric Joule heating from battery internal resistance.
 
 ### Network Architecture
 
-- **Input:** Spatial coordinates $$(x, y, z)$$
-- **Output:** Velocity field $$(u, v, w)$$, pressure $$p$$, temperature $$T$$
+- **Input:** Spatial coordinates (x, y, z)
+- **Output:** Velocity field (u, v, w), pressure p, temperature T
 - **Activation:** Hyperbolic tangent (smooth second derivatives)
 - **Training:** Adam optimizer with adaptive physics loss weighting
 
