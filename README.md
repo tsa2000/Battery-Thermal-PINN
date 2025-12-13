@@ -1,48 +1,61 @@
-🔋 Battery Thermal PINN: EV Thermal Management
+# 🔋 Battery Thermal PINN
 
-Physics-Informed Neural Networks for coupled thermal-fluid simulation in lithium-ion battery cooling systems
+**Physics-Informed Neural Networks for coupled thermal-fluid simulation in lithium-ion battery cooling systems**
 
-⸻
+[
+[
+[
 
-🎯 Motivation
+***
+
+## 🎯 Motivation
 
 Traditional CFD solvers (OpenFOAM, ANSYS Fluent) require hours per simulation, limiting parametric design studies for battery packs. This PINN framework enables:
-	•	Fast predictions after training (milliseconds vs hours)
-	•	Mesh-free operation (eliminates complex preprocessing)
-	•	Differentiable outputs for gradient-based optimization
 
-Target application: Real-time thermal management in electric vehicles.
+- **Fast predictions** after training (milliseconds vs hours)
+- **Mesh-free operation** (eliminates complex preprocessing)
+- **Differentiable outputs** for gradient-based optimization
 
-⸻
+**Target application:** Real-time thermal management in electric vehicles.
 
-🧠 Physics Implementation
+***
 
-Governing Equations
+## 🧠 Physics Implementation
 
-Continuity (Incompressible Flow)
+### Governing Equations
 
-∇·u = 0
+**Continuity (Incompressible Flow)**
 
-Navier-Stokes (Momentum)
+$$
+\nabla \cdot \mathbf{u} = 0
+$$
 
-ρ(u·∇)u = -∇p + μ∇²u
+**Navier-Stokes (Momentum)**
 
-Energy (with Heat Source)
+$$
+\rho (\mathbf{u} \cdot \nabla) \mathbf{u} = -\nabla p + \mu \nabla^2 \mathbf{u}
+$$
 
-ρc_p(u·∇T) = k∇²T + q̇
+**Energy (with Heat Source)**
 
-Where q̇ represents volumetric Joule heating from battery internal resistance.
+$$
+\rho c_p (\mathbf{u} \cdot \nabla) T = k \nabla^2 T + \dot{q}
+$$
 
-Network Architecture
-	•	Input: Spatial coordinates (x, y, z)
-	•	Output: Velocity field (u, v, w), pressure (p), temperature (T)
-	•	Activation: Hyperbolic tangent (smooth second derivatives)
-	•	Training: Adam optimizer with adaptive physics loss weighting
+Where $$\dot{q}$$ represents volumetric Joule heating from battery internal resistance.
 
-⸻
+### Network Architecture
 
-📁 Project Structure
+- **Input:** Spatial coordinates $$(x, y, z)$$
+- **Output:** Velocity field $$(u, v, w)$$, pressure $$p$$, temperature $$T$$
+- **Activation:** Hyperbolic tangent (smooth second derivatives)
+- **Training:** Adam optimizer with adaptive physics loss weighting
 
+***
+
+## 📁 Project Structure
+
+```
 Battery-Thermal-PINN/
 ├── configs/
 │   └── battery_sim.yaml   # Simulation parameters
@@ -52,100 +65,123 @@ Battery-Thermal-PINN/
 │   ├── boundary.py        # Boundary conditions
 │   └── utils.py           # Utilities
 ├── main.py                # Training script
-└── requirements.txt
+└── requirements.txt       # Dependencies
+```
 
+***
 
-⸻
+## 🚀 Quick Start
 
-🚀 Quick Start
+### Installation
 
-Installation
-
+```bash
 git clone https://github.com/tsa2000/Battery-Thermal-PINN.git
 cd Battery-Thermal-PINN
 pip install -r requirements.txt
+```
 
-Training
+### Training
 
+```bash
 # Basic training
 python main.py --config configs/battery_sim.yaml
 
 # Resume from checkpoint
 python main.py --resume results/checkpoint_epoch_3000.pth
+```
 
+***
 
-⸻
+## ⚙️ Configuration
 
-⚙️ Configuration
+Edit `configs/battery_sim.yaml` to customize:
 
-Edit configs/battery_sim.yaml to customize:
-	•	Material properties: rho, cp, k_th
-	•	Heat generation: heat_source
-	•	Domain geometry: x_min, x_max, etc.
-	•	Boundary conditions: T_inlet, u_inlet
-	•	Training: epochs, lr, batch_size
+- **Material properties:** `rho`, `cp`, `k_th`
+- **Heat generation:** `heat_source`
+- **Domain geometry:** `x_min`, `x_max`, etc.
+- **Boundary conditions:** `T_inlet`, `u_inlet`
+- **Training:** `epochs`, `lr`, `batch_size`
 
-⸻
+***
 
-🔬 Validation Approach
+## 🔬 Validation Approach
 
 Current validation steps:
-	1.	Analytical benchmarks: 1D heat conduction solutions
-	2.	CFD cross-validation: OpenFOAM comparison for simple geometries
-	3.	Energy balance: Heat generation vs removal verification
 
-⸻
+1. **Analytical benchmarks:** 1D heat conduction solutions
+2. **CFD cross-validation:** OpenFOAM comparison for simple geometries
+3. **Energy balance:** Heat generation vs removal verification
 
-📊 Features
+***
 
-Implemented ✅
-	•	Full PDE residual computation
-	•	Neural network with physics-informed loss
-	•	Boundary condition enforcement
-	•	Training loop with checkpoints
+## 📊 Features
 
-In Progress 🔄
-	•	Benchmark dataset generation
-	•	Performance comparison metrics
-	•	Hyperparameter optimization
+### Implemented ✅
 
-⸻
+- Full PDE residual computation
+- Neural network with physics-informed loss
+- Boundary condition enforcement
+- Training loop with checkpoints
 
-🎓 Research Context
+### In Progress 🔄
+
+- Benchmark dataset generation
+- Performance comparison metrics
+- Hyperparameter optimization
+
+***
+
+## 🎓 Research Context
 
 Exploring AI-accelerated CFD integration with battery management systems (BMS) for real-time thermal monitoring in EVs.
 
-Key references:
-	•	Raissi et al. (2019): Physics-informed neural networks
-	•	Wang et al. (2022): Adaptive loss balancing for multi-physics PINNs
+**Key references:**
+- Raissi et al. (2019): Physics-informed neural networks
+- Wang et al. (2022): Adaptive loss balancing for multi-physics PINNs
 
-⸻
+***
 
-🛠️ Future Extensions
-	•	Transient (time-dependent) simulations
-	•	Multi-phase cooling systems
-	•	Adaptive mesh refinement
-	•	Turbulence modeling
+## 🛠️ Future Extensions
 
-⸻
+- Transient (time-dependent) simulations
+- Multi-phase cooling systems
+- Adaptive mesh refinement
+- Turbulence modeling
 
-📄 License
+***
 
-MIT License - see LICENSE file for details.
+## 📄 License
 
-⸻
+MIT License - see [LICENSE](LICENSE) file for details.
 
-👤 Author
+***
 
-Thaer Abushawer
-Mechanical Engineer | Energetics
-Focus: AI-Enhanced Computational Methods for Thermal Systems
-Thaer199@gmail.com￼
+## 👤 Author
 
-⸻
+**Thaer Abushawer**  
+Mechanical Engineer | Energetics  
+Focus: AI-Enhanced Computational Methods for Thermal Systems  
+📧 Thaer199@gmail.com
 
-🙏 Acknowledgments
+***
+
+## 🙏 Acknowledgments
 
 Developed as part of research in advanced thermal management systems for electric vehicles.
 
-Built with PyTorch and the scientific Python ecosystem.
+Built with [PyTorch](https://pytorch.org/) and the scientific Python ecosystem.
+
+***
+
+## 📚 Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@software{abushawer2025battery,
+  author = {Abushawer, Thaer},
+  title = {Battery Thermal PINN: Physics-Informed Neural Networks for EV Thermal Management},
+  year = {2025},
+  url = {https://github.com/tsa2000/Battery-Thermal-PINN}
+}
+```
