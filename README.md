@@ -102,7 +102,7 @@ print("Prediction [u, v, w, p, T]:", prediction)
 
 ⸻
 
-⚙️ Configuration
+#⚙️ Configuration
 
 Edit configs/battery_sim.yaml to customize:
 	•	Material properties: rho, cp, k_th
@@ -113,14 +113,14 @@ Edit configs/battery_sim.yaml to customize:
 
 ⸻
 
-🔬 Validation Approach
+#🔬 Validation Approach
 	1.	Analytical benchmarks: 1D heat conduction solutions
 	2.	CFD cross-validation: OpenFOAM comparison for simple geometries
 	3.	Energy balance: Heat generation vs removal verification
 
 ⸻
 
-📊 Features
+#📊 Features
 
 Implemented ✅
 	•	Full PDE residual computation
@@ -135,7 +135,7 @@ In Progress 🔄
 
 ⸻
 
-🎓 Research Context
+#🎓 Research Context
 
 Exploring AI-accelerated CFD integration with battery management systems (BMS) for real-time thermal monitoring in EVs.
 
@@ -145,7 +145,7 @@ Key references:
 
 ⸻
 
-🛠️ Future Extensions
+#🛠️ Future Extensions
 	•	Transient (time-dependent) simulations
 	•	Multi-phase cooling systems
 	•	Adaptive mesh refinement
@@ -153,13 +153,13 @@ Key references:
 
 ⸻
 
-📄 License
+#📄 License
 
 MIT License - see LICENSE file for details.
 
 ⸻
 
-👤 Author
+#👤 Author
 
 Thaer Abushawer
 Mechanical Engineer | Energetics
@@ -168,7 +168,7 @@ Thaer199@gmail.com￼
 
 ⸻
 
-🙏 Acknowledgments
+#🙏 Acknowledgments
 
 Developed as part of research in advanced thermal management systems for electric vehicles.
 
