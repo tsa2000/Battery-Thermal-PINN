@@ -26,15 +26,18 @@ Traditional CFD solvers (OpenFOAM, ANSYS Fluent) require hours per simulation, l
 
 **Continuity (Incompressible Flow)**
 
-\nabla \cdot \mathbf{u} = 0
+∇·u = 0
+
 
 **Navier-Stokes (Momentum)**
 
-\rho (\mathbf{u} \cdot \nabla) \mathbf{u} = -\nabla p + \mu \nabla^2 \mathbf{u}
+ρ(u·∇)u = -∇p + μ∇²u
+
 
 **Energy (with Heat Source)**
 
-\rho c_p (\mathbf{u} \cdot \nabla) T = k \nabla^2 T + \dot{q}
+ρcₚ(u·∇)T = k∇²T + q̇
+
 
 Where $$\dot{q}$$ represents volumetric Joule heating from battery internal resistance.
 
