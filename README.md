@@ -133,8 +133,12 @@ Current validation steps:
 Exploring AI-accelerated CFD integration with battery management systems (BMS) for real-time thermal monitoring in EVs.
 
 **Key references:**
-- Raissi et al. (2019): Physics-informed neural networks
-- Wang et al. (2022): Adaptive loss balancing for multi-physics PINNs
+[1] Paul T. Coman et al 2022 J. Electrochem. Soc. 169 040516.
+[2] Raissi, M., Perdikaris, P., & Karniadakis, G.E. (2019).  "Physics-informed neural networks." J. Comp. Phys., 378, 686-707.
+[3] Karniadakis, G.E., et al. (2021).  "Physics-informed machine learning." Nature Rev. Physics, 3(6), 422-440.
+[4] Cuomo, S., et al. (2022).  "Scientific ML through PINNs." J. Sci. Comp., 92(3), 88.
+<img width="2781" height="435" alt="image" src="https://github.com/user-attachments/assets/71ab9447-61be-4735-8ff5-6251e7638756" />
+
 
 ***
 
